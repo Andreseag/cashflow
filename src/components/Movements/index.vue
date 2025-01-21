@@ -1,8 +1,30 @@
 <template>
   <div class="movements">
-    Movements
+    <h2 class="title">
+      Historial
+    </h2>
+    <div class="content">
+      <Movement v-for="movement in movements" :key="movement.id" :movement="movement">
+      </Movement>
+    </div>
   </div>
 </template>
+
+<script setup>
+  import { defineProps } from "vue";
+  import Movement from "./Movement.vue";
+
+  const { movements } = defineProps({
+    movements: {
+      type: Array,
+      default: () => [],
+    },
+  });
+
+
+  console.log("Movements: ", movements);
+
+</script>
 
 <style scoped>
 .movements {

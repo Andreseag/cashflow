@@ -3,13 +3,15 @@
     Agregar movimiento
   </button>
   <teleport to="#app">
-    <div v-show="showModal">
-      Modal
-    </div>    
+    <Modal v-show="showModal" @close="showModal = false">
+      
+    </Modal>    
   </teleport>
 </template>
 
 <script setup>
+// components imports
+import Modal from "@/components/Modal.vue";
 
 import { ref } from 'vue';
 

@@ -4,7 +4,12 @@
       Historial
     </h2>
     <div class="content">
-      <Movement v-for="movement in movements" :key="movement.id" :movement="movement">
+      <Movement
+        v-for="movement in movements"
+        :key="movement.id"
+        :movement="movement"
+        @remove="removeMovement"
+      >
       </Movement>
     </div>
   </div>
@@ -22,8 +27,10 @@
   });
 
 
-  console.log("Movements: ", movements);
-
+  const removeMovement = (id) => {
+    console.log("Removing movement with id", id);
+  };
+  
 </script>
 
 <style scoped>

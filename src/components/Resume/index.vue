@@ -14,10 +14,7 @@
 
 <script>
 
-const currencyFormatter = new Intl.NumberFormat("es-CO", {
-  style: "currency",
-  currency: "COP",
-});
+import { currencyFormatter } from "@/utils";
 
 export default {
   props: {

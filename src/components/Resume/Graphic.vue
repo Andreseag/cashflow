@@ -15,7 +15,7 @@
         fill="none"
         stroke="#0689B0"
         stroke-width="2"
-        points="0,0 100,100 200,100 300,200"
+        :points="points"
       />
       <line 
         stroke="#04b500"
@@ -29,6 +29,39 @@
     <p>Últimos 30 días</p>
   </div>
 </template>
+
+<script setup >
+
+
+import { defineProps, computed } from 'vue';
+
+// Helper function to convert amounts to pixels
+const amountToPixels = () => {
+  const min = Math.min(...amounts);
+  const max = Math.max(...amounts);
+  return `${min}, ${max}`;
+};
+
+
+const { amounts } = defineProps({
+  amounts: {
+    type: Array,
+    default: () => []
+  }
+});
+
+const points = computed(() => {
+  
+  const total = amounts.length;
+
+  return Array(total).fill(100).reduce((points, amount, index) => {
+    const x = (300 / total) * index + 1;
+    const y = amountToPixels(amount);
+    return `${points} ${x}, ${y}`;
+  }, '0, 100');
+});
+
+</script>
 
 <style scoped>
 svg {
